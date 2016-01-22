@@ -2,7 +2,7 @@ L.Map.GamepadController = L.Handler.extend({
 	options: {
 		analogicCoef: 200, // coefficient for converting the raw values in pixels 
 		speedLimit: 60, // speed limits in pixels
-		zoomTrigger: 0.005, // The value for triggering a zoom
+		zoomTrigger: 0.2, // The value for triggering a zoom
 		zoomReset: 5 // The value representing the end of a zoom,
 	},
 
