@@ -1,8 +1,8 @@
 L.Map.GamepadController = L.Handler.extend({
 	options: {
-		analogicCoef: 0.25, // coefficient for converting the raw values in pixels 
+		analogicCoef: 100, // coefficient for converting the raw values in pixels 
 		speedLimit: 15, // speed limits in pixels
-		zoomTrigger: 30, // The value for triggering a zoom
+		zoomTrigger: .005, // The value for triggering a zoom
 		zoomReset: 5, // The value representing the end of a zoom,
 		slowBoost: 3 // coefficient for boosting the slow movements
 	},
@@ -94,10 +94,6 @@ L.Map.GamepadController = L.Handler.extend({
 			limitUp = this.options.speedLimit,
 			limitDown = -limitUp,
 			point = this._point,
-
-			ya = this.options.slowBoost,
-			xb = 10, yb = 1,
-			interpolation = ((yb - ya)/xb),
 
 			axe1 = gamepad.axes[0] * analogicCoef,
 			axe2 = gamepad.axes[1] * analogicCoef;
