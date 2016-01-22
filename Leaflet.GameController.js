@@ -1,10 +1,9 @@
 L.Map.GamepadController = L.Handler.extend({
 	options: {
-		analogicCoef: 100, // coefficient for converting the raw values in pixels 
-		speedLimit: 15, // speed limits in pixels
-		zoomTrigger: .005, // The value for triggering a zoom
-		zoomReset: 5, // The value representing the end of a zoom,
-		slowBoost: 3 // coefficient for boosting the slow movements
+		analogicCoef: 200, // coefficient for converting the raw values in pixels 
+		speedLimit: 60, // speed limits in pixels
+		zoomTrigger: 0.005, // The value for triggering a zoom
+		zoomReset: 5 // The value representing the end of a zoom,
 	},
 
 	addHooks: function() {
@@ -98,8 +97,8 @@ L.Map.GamepadController = L.Handler.extend({
 			axe1 = gamepad.axes[0] * analogicCoef,
 			axe2 = gamepad.axes[1] * analogicCoef;
 
-                var x = Math.round(Math.max(Math.min(axe2, limitUp), limitDown));
-		var y = Math.round(Math.max(Math.min(axe1, limitUp), limitDown));
+		var x = Math.round(Math.max(Math.min(axe1, limitUp), limitDown));
+                var y = Math.round(Math.max(Math.min(axe2, limitUp), limitDown));
 
 		// If the map is moved
 		if (Math.abs(x) >= 1 || Math.abs(y) >= 1) {
