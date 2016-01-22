@@ -11,7 +11,11 @@ L.Map.GamepadController = L.Handler.extend({
 		this._point = new L.Point(0,0);
 		this._inZoom = false;
 
-		if (!this._onceLock) {
+                if (navigator.getGamepads().length > 0) {
+			this._onceLock = true;
+			this._gamepadRequest = L.Util.requestAnimFrame(this._gamepadLoop, this);
+			this._gamepadDetected = true;
+                } else if (!this._onceLock) {
 			this._onceLock = true;
 			window.addEventListener('gamepadconnected',
 				L.bind(function() {
@@ -22,7 +26,7 @@ L.Map.GamepadController = L.Handler.extend({
 			}, this));
 		} else if (this._gamepadDetected && !this._gamepadRequest) {
 			this._gamepadRequest = L.Util.requestAnimFrame(this._gamepadLoop, this);
-		}
+                }
 	},
 
 	removeHooks: function() {
