@@ -102,17 +102,13 @@ L.Map.GamepadController = L.Handler.extend({
 			axe1 = gamepad.axes[0] * analogicCoef,
 			axe2 = gamepad.axes[1] * analogicCoef;
 
-		var v = Math.round(
-			Math.max(Math.min((ya + axe2 * interpolation) * axe2,
-				limitUp), limitDown)),
-			vv = Math.round(
-				Math.max(Math.min((ya + axe1 * interpolation) * axe1,
-					limitUp), limitDown));
+                var x = Math.round(Math.max(Math.min(axe2, limitUp), limitDown));
+		var y = Math.round(Math.max(Math.min(axe1, limitUp), limitDown));
 
 		// If the map is moved
-		if (Math.abs(v) > 1 && Math.abs(vv) > 1) {
-			point.x = vv;
-			point.y = v;
+		if (Math.abs(x) >= 1 || Math.abs(y) >= 1) {
+			point.x = x;
+			point.y = y;
 
 			if (!this._dragging) {
 				this._dragging = true;	

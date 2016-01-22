@@ -3,7 +3,7 @@ Leaflet.GameController
 
 This is an interaction handler for [Leaflet](http://leafletjs.com), prodiving support for gamepads.
 
-[Example](http://sintef-9012.github.io/Leaflet.GameController/example.html)
+[Example](http://carrino.github.io/Leaflet.GameController/example.html)
 
 ### Usage
 
